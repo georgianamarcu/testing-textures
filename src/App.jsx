@@ -33,11 +33,13 @@ function App() {
   return (
     <AppContext.Provider value={{ textureUrl }}>
       <Canvas dpr={[1, 2]}>
-        <Stage preset="rembrandt" intensity={0.6}>
-          <Suspense fallback={null}>
-            <Headboard />
-          </Suspense>
-        </Stage>
+        <Suspense fallback={null}>
+          <Stage preset="rembrandt" intensity={0.6}>
+            <Suspense fallback={null}>
+              <Headboard />
+            </Suspense>
+          </Stage>
+        </Suspense>
         <Controls />
       </Canvas>
       <Overlay getTextureFile={getTextureFile} />
