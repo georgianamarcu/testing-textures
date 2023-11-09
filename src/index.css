@@ -1,12 +1,9 @@
 #root {
   width: 100vw;
   height: 100vh;
+  font-family: 'Roboto', sans-serif;
 }
 
 body {
   margin: 0;
-}
-
-.svg-icon:hover {
-  cursor: pointer;
 }
