@@ -33,7 +33,7 @@ function App() {
   return (
     <AppContext.Provider value={{ textureUrl }}>
       <Canvas dpr={[1, 2]}>
-        <Stage adjustCamera preset="rembrandt" intensity={0.6}>
+        <Stage preset="rembrandt" intensity={0.6}>
           <Suspense fallback={null}>
             <Headboard />
           </Suspense>
