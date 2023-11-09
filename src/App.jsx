@@ -76,7 +76,7 @@ function Headboard() {
 function Overlay({ getTextureFile }) {
   return (
     <ContainerOverlay>
-      <Text>Upload your texture</Text>
+      <Text>Upload your texture:</Text>
       <input type="file" onChange={(e) => getTextureFile(e)} />
     </ContainerOverlay>
   );
@@ -95,14 +95,13 @@ const ContainerOverlay = styled.div`
   bottom: 2vh;
   right: 2vw;
   border-radius: 10px;
-  background: rgba(0, 0, 0, 0.608);
-  box-shadow: 0 8px 32px 0 rgba(255, 255, 255, 0.17);
+  background: rgba(158, 190, 230, 0.608);
   backdrop-filter: blur(4px);
   -webkit-backdrop-filter: blur(4px);
 `;
 
 const Text = styled.p`
-  color: #fff;
+  color: #000;
   font-weight: 100;
   font-size: 0.9rem;
 `;
