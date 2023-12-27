@@ -4,6 +4,7 @@ const initialState = {
   albedoUrl: null,
   roughnessUrl: null,
   normalsUrl: null,
+  repeat: 4,
 };
 
 export const useAppStore = create((set) => ({

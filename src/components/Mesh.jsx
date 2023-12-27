@@ -12,6 +12,7 @@ const Mesh = () => {
   const albedoUrl = useAppStore((state) => state.albedoUrl);
   const roughnessUrl = useAppStore((state) => state.roughnessUrl);
   const normalsUrl = useAppStore((state) => state.normalsUrl);
+  const repeat = useAppStore((state) => state.repeat);
 
   const { scene } = useGLTF("/cube.glb");
 
@@ -22,7 +23,7 @@ const Mesh = () => {
       textureLoader.load(albedoUrl, (texture) => {
         texture.colorSpace = SRGBColorSpace;
         texture.flipY = false;
-        texture.repeat.set(4, 4);
+        texture.repeat.set(repeat, repeat);
         texture.wrapS = RepeatWrapping;
         texture.wrapT = RepeatWrapping;
 
@@ -38,7 +39,7 @@ const Mesh = () => {
       textureLoader.load(roughnessUrl, (texture) => {
         texture.colorSpace = LinearSRGBColorSpace;
         texture.flipY = false;
-        texture.repeat.set(4, 4);
+        texture.repeat.set(repeat, repeat);
         texture.wrapS = RepeatWrapping;
         texture.wrapT = RepeatWrapping;
 
@@ -54,7 +55,7 @@ const Mesh = () => {
       textureLoader.load(normalsUrl, (texture) => {
         texture.colorSpace = LinearSRGBColorSpace;
         texture.flipY = false;
-        texture.repeat.set(4, 4);
+        texture.repeat.set(repeat, repeat);
         texture.wrapS = RepeatWrapping;
         texture.wrapT = RepeatWrapping;
 
@@ -65,7 +66,7 @@ const Mesh = () => {
         model.material.needsUpdate = true;
       });
     }
-  }, [albedoUrl, roughnessUrl, normalsUrl, scene.children]);
+  }, [albedoUrl, roughnessUrl, normalsUrl, scene.children, repeat]);
 
   return <primitive object={scene} rotation={[0, Math.PI / 2, 0]} />;
 };
