@@ -28,10 +28,9 @@ const Mesh = () => {
 
         if (model.material.map) {
           model.material.map.dispose();
-        } else {
-          model.material.map = texture;
-          model.material.needsUpdate = true;
         }
+        model.material.map = texture;
+        model.material.needsUpdate = true;
       });
     }
     if (roughnessUrl) {
@@ -45,10 +44,9 @@ const Mesh = () => {
 
         if (model.material.roughnessMap) {
           model.material.roughnessMap.dispose();
-        } else {
-          model.material.roughnessMap = texture;
-          model.material.needsUpdate = true;
         }
+        model.material.roughnessMap = texture;
+        model.material.needsUpdate = true;
       });
     }
     if (normalsUrl) {
@@ -62,10 +60,9 @@ const Mesh = () => {
 
         if (model.material.normalMap) {
           model.material.normalMap.dispose();
-        } else {
-          model.material.normalMap = texture;
-          model.material.needsUpdate = true;
         }
+        model.material.normalMap = texture;
+        model.material.needsUpdate = true;
       });
     }
   }, [albedoUrl, roughnessUrl, normalsUrl, scene.children]);
