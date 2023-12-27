@@ -8,13 +8,13 @@ function Controls() {
       <OrbitControls
         ref={cameraRef}
         makeDefault
-        enablePan={false}
+        enablePan={true}
         dampingFactor={0.07}
         rotateSpeed={0.2}
-        minPolarAngle={1}
-        maxPolarAngle={Math.PI / 2}
-        minAzimuthAngle={-Math.PI / 4}
-        maxAzimuthAngle={Math.PI / 4}
+        // minPolarAngle={1}
+        // maxPolarAngle={Math.PI / 2}
+        // minAzimuthAngle={-Math.PI / 4}
+        // maxAzimuthAngle={Math.PI / 4}
         // onChange={() => {
         //   if (cameraRef) {
         //     console.log(cameraRef.current.object);

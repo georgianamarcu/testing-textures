@@ -18,9 +18,10 @@
     "r3f-perf": "^7.1.2",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
+    "react-dropzone": "^14.2.3",
     "styled-components": "^6.1.0",
     "three": "^0.154.0",
-    "zustand": "^4.4.4"
+    "zustand": "^4.4.7"
   },
   "devDependencies": {
     "@types/react": "^18.0.37",
