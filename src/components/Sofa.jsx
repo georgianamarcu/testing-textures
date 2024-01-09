@@ -15,8 +15,6 @@ export function Sofa(props) {
   const normalsUrl = useAppStore((state) => state.normalsUrl);
   const repeat = useAppStore((state) => state.repeat);
 
-  console.log(albedoUrl);
-
   const sofa = useRef();
 
   useEffect(() => {
@@ -55,11 +53,9 @@ export function Sofa(props) {
 
   return (
     <group {...props} dispose={null} scale={[5, 5, 5]}>
-      <mesh
-        ref={sofa}
-        geometry={nodes.sofa.geometry}
-        material={materials.fabric}
-      />
+      <mesh ref={sofa} geometry={nodes.sofa.geometry}>
+        <meshStandardMaterial />
+      </mesh>
     </group>
   );
 }
