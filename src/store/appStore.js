@@ -4,7 +4,7 @@ const initialState = {
   albedoUrl: null,
   roughnessUrl: null,
   normalsUrl: null,
-  repeat: 4,
+  repeat: 10,
   stagePreset: "rembrandt",
   lightIntensity: 0.5,
 };
