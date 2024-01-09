@@ -2,6 +2,7 @@
 import { useDropzone } from "react-dropzone";
 import styled from "styled-components";
 import { useAppStore } from "../../store/appStore";
+import { Trash } from "@phosphor-icons/react";
 
 const getColor = (props) => {
   if (props.isDragAccept) {
@@ -46,8 +47,12 @@ const Dropzone = ({ textureState, textureTitle }) => {
   const { getRootProps, getInputProps, isFocused, isDragAccept, isDragReject } =
     useDropzone({ accept: { "image/*": [] }, onDrop });
 
+  const removeMap = () => {
+    update({ [textureState]: null });
+  };
+
   return (
-    <div className="container">
+    <MainContainer>
       <Container {...getRootProps({ isFocused, isDragAccept, isDragReject })}>
         <Title>{textureTitle}</Title>
         <input {...getInputProps()} />
@@ -62,11 +67,18 @@ const Dropzone = ({ textureState, textureTitle }) => {
           />
         )}
       </Container>
-    </div>
+      <RemoveItem onClick={removeMap}>
+        <Trash size={20} color="#292929" weight="duotone" />
+      </RemoveItem>
+    </MainContainer>
   );
 };
 
 export default Dropzone;
+
+const MainContainer = styled.div`
+  display: flex;
+`;
 
 const Container = styled.div`
   display: flex;
@@ -84,13 +96,29 @@ const Container = styled.div`
 `;
 
 const StyledText = styled.p`
-  font-family: Garamond, serif;
+  font-family: Tahoma, sans-serif;
   font-size: 14px;
   color: #bdbdbd;
 `;
 
 const Title = styled.h2`
-  font-family: Garamond, serif;
+  font-family: Tahoma, sans-serif;
   font-size: 20px;
   color: #bdbdbd;
+`;
+
+const RemoveItem = styled.div`
+  position: absolute;
+  right: 1.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 35px;
+  height: 35px;
+  background-color: #fcfdff;
+  border: 1px solid black;
+  border-radius: 50%;
+  &:hover {
+    cursor: pointer;
+  }
 `;

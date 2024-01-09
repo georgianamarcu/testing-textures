@@ -5,6 +5,8 @@ const initialState = {
   roughnessUrl: null,
   normalsUrl: null,
   repeat: 4,
+  stagePreset: "rembrandt",
+  lightIntensity: 0.5,
 };
 
 export const useAppStore = create((set) => ({
