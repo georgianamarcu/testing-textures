@@ -13,6 +13,10 @@ const Overlay = () => {
   const repeat = useAppStore((state) => state.repeat);
   const update = useAppStore((state) => state.update);
   const intensity = useAppStore((state) => state.lightIntensity);
+  const enableRandom = useAppStore((state) => state.enableRandom);
+  const useNoiseMap = useAppStore((state) => state.useNoiseMap);
+  const useSuslikMethod = useAppStore((state) => state.useSuslikMethod);
+  const debugNoise = useAppStore((state) => state.debugNoise);
 
   const decrement = () => {
     if (repeat > 1) {
@@ -27,6 +31,10 @@ const Overlay = () => {
   };
 
   const presets = ["rembrandt", "portrait", "upfront", "soft"];
+
+  const updateCheckboxState = (property, value) => {
+    update({ [property]: value });
+  };
 
   return (
     <>
@@ -70,6 +78,59 @@ const Overlay = () => {
             value={intensity}
           />
         </SliderContainer>
+        {/* <Checkboxes>
+          <CheckboxDiv>
+            <CheckboxInput
+              type="checkbox"
+              id="randomUVs"
+              name="randomUVs"
+              checked={enableRandom === 1 ? true : false}
+              onChange={() =>
+                updateCheckboxState("enableRandom", enableRandom === 1 ? 0 : 1)
+              }
+            />
+            <label htmlFor="enableRandomUV">Enable Random Uvs</label>
+          </CheckboxDiv>
+          <CheckboxDiv>
+            <CheckboxInput
+              type="checkbox"
+              id="useNoiseMap"
+              name="useNoiseMap"
+              checked={useNoiseMap === 1 ? true : false}
+              onChange={() =>
+                updateCheckboxState("useNoiseMap", useNoiseMap === 1 ? 0 : 1)
+              }
+            />
+            <label htmlFor="useNoiseMap">Use Noise Map</label>
+          </CheckboxDiv>
+          <CheckboxDiv>
+            <CheckboxInput
+              type="checkbox"
+              id="useSuslikMethod"
+              name="useSuslikMethod"
+              checked={useSuslikMethod === 1 ? true : false}
+              onChange={() =>
+                updateCheckboxState(
+                  "useSuslikMethod",
+                  useSuslikMethod === 1 ? 0 : 1
+                )
+              }
+            />
+            <label htmlFor="useSuslikMethod">Use Blending Method</label>
+          </CheckboxDiv>
+          <CheckboxDiv>
+            <CheckboxInput
+              type="checkbox"
+              id="debugNoise"
+              name="debugNoise"
+              checked={debugNoise === 1 ? true : false}
+              onChange={() =>
+                updateCheckboxState("debugNoise", debugNoise === 1 ? 0 : 1)
+              }
+            />
+            <label htmlFor="debugNoise">Debug Noise</label>
+          </CheckboxDiv>
+        </Checkboxes> */}
       </ContainerSettings>
       <ContainerUpload>
         {textures.map((texture) => (
@@ -204,3 +265,25 @@ const SliderText = styled.p`
   font-weight: bold;
 `;
 const SliderSpan = styled.span``;
+
+const Checkboxes = styled.div`
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: auto;
+  justify-items: start;
+  gap: 0.5rem;
+`;
+
+const CheckboxDiv = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  label {
+    font-family: Tahoma, sans-serif;
+    color: #292929;
+    user-select: none;
+    font-size: 0.8rem;
+  }
+`;
+
+const CheckboxInput = styled.input``;

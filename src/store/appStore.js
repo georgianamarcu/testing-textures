@@ -4,9 +4,13 @@ const initialState = {
   albedoUrl: null,
   roughnessUrl: null,
   normalsUrl: null,
-  repeat: 10,
+  repeat: 6,
   stagePreset: "rembrandt",
   lightIntensity: 0.5,
+  enableRandom: 0,
+  useNoiseMap: 0,
+  useSuslikMethod: 0,
+  debugNoise: 0,
 };
 
 export const useAppStore = create((set) => ({
