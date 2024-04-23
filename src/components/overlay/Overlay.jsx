@@ -57,15 +57,15 @@ const Overlay = () => {
             />
           </RepeatValue>
         </RepeatContainer>
-        <PresetsContainer>
+        {/* <PresetsContainer>
           <h3>Stage lights presets</h3>
           <Select
             label="rembrandt"
             values={presets}
             onChange={(v) => update({ stagePreset: v })}
           />
-        </PresetsContainer>
-        <SliderContainer>
+        </PresetsContainer> */}
+        {/* <SliderContainer>
           <SliderText>
             Light intensity <SliderSpan />
           </SliderText>
@@ -77,7 +77,7 @@ const Overlay = () => {
             step={0.1}
             value={intensity}
           />
-        </SliderContainer>
+        </SliderContainer> */}
         {/* <Checkboxes>
           <CheckboxDiv>
             <CheckboxInput
@@ -155,7 +155,7 @@ const ContainerSettings = styled.div`
   align-items: center;
   gap: 1.5rem;
   width: 25vw;
-  height: 20vh;
+  height: 3vh;
   padding: 1rem;
   bottom: 10vh;
   left: 1vw;
