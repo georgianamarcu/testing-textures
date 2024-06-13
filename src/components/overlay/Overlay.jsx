@@ -2,7 +2,7 @@ import styled from "styled-components";
 import Dropzone from "./Dropzone";
 import { PlusCircle, MinusCircle } from "@phosphor-icons/react";
 import { useAppStore } from "../../store/appStore";
-import Select from "./Select";
+// import Select from "./Select";
 
 const Overlay = () => {
   const textures = [
@@ -12,11 +12,12 @@ const Overlay = () => {
   ];
   const repeat = useAppStore((state) => state.repeat);
   const update = useAppStore((state) => state.update);
-  const intensity = useAppStore((state) => state.lightIntensity);
-  const enableRandom = useAppStore((state) => state.enableRandom);
-  const useNoiseMap = useAppStore((state) => state.useNoiseMap);
-  const useSuslikMethod = useAppStore((state) => state.useSuslikMethod);
-  const debugNoise = useAppStore((state) => state.debugNoise);
+
+  // const intensity = useAppStore((state) => state.lightIntensity);
+  // const enableRandom = useAppStore((state) => state.enableRandom);
+  // const useNoiseMap = useAppStore((state) => state.useNoiseMap);
+  // const useSuslikMethod = useAppStore((state) => state.useSuslikMethod);
+  // const debugNoise = useAppStore((state) => state.debugNoise);
 
   const decrement = () => {
     if (repeat > 1) {
@@ -30,14 +31,30 @@ const Overlay = () => {
     }
   };
 
-  const presets = ["rembrandt", "portrait", "upfront", "soft"];
+  // const presets = ["rembrandt", "portrait", "upfront", "soft"];
 
-  const updateCheckboxState = (property, value) => {
-    update({ [property]: value });
-  };
+  // const updateCheckboxState = (property, value) => {
+  //   update({ [property]: value });
+  // };
 
   return (
     <>
+      <ChangeModelContainer>
+        <ImageContainer>
+          <ImageSelect
+            src="/bed.jpg"
+            alt="bed"
+            onClick={() => update({ selectedModel: "bed" })}
+          />
+        </ImageContainer>
+        <ImageContainer>
+          <ImageSelect
+            src="/chair.jpg"
+            alt="chair"
+            onClick={() => update({ selectedModel: "chair" })}
+          />
+        </ImageContainer>
+      </ChangeModelContainer>
       <ContainerSettings>
         <RepeatContainer>
           <h3>Texture repeat value</h3>
@@ -206,84 +223,120 @@ const RepeatContainer = styled.div`
   }
 `;
 
-const PresetsContainer = styled.div`
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  width: 100%;
-  gap: 1rem;
-  h3 {
-    margin: 0;
-    text-align: center;
-    font-family: Tahoma, sans-serif;
-    color: #292929;
-    user-select: none;
-    font-size: 0.8rem;
-  }
-`;
+// const PresetsContainer = styled.div`
+//   display: flex;
+//   align-items: center;
+//   justify-content: space-between;
+//   width: 100%;
+//   gap: 1rem;
+//   h3 {
+//     margin: 0;
+//     text-align: center;
+//     font-family: Tahoma, sans-serif;
+//     color: #292929;
+//     user-select: none;
+//     font-size: 0.8rem;
+//   }
+// `;
 
-const SliderContainer = styled.div`
-  width: 100%;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-`;
-const SliderInput = styled.input`
-  -webkit-appearance: none;
-  width: 60%;
-  height: 12px;
-  border-radius: 5px;
-  background: #d3d3d3;
-  outline: none;
-  opacity: 0.7;
-  &:hover {
-    opacity: 1;
-  }
-  -webkit-transition: 0.2s;
-  transition: opacity 0.2s;
-  &::-webkit-slider-thumb {
-    -webkit-appearance: none;
-    appearance: none;
-    width: 20px;
-    height: 20px;
-    border-radius: 50%;
-    background: #292929;
-    cursor: pointer;
-  }
-  &::-moz-range-thumb {
-    width: 20px;
-    height: 20px;
-    border-radius: 50%;
-    background: #292929;
-    cursor: pointer;
-  }
-`;
-const SliderText = styled.p`
-  font-family: Tahoma, sans-serif;
-  color: #292929;
-  font-size: 0.8rem;
-  font-weight: bold;
-`;
-const SliderSpan = styled.span``;
+// const SliderContainer = styled.div`
+//   width: 100%;
+//   display: flex;
+//   align-items: center;
+//   justify-content: space-between;
+// `;
+// const SliderInput = styled.input`
+//   -webkit-appearance: none;
+//   width: 60%;
+//   height: 12px;
+//   border-radius: 5px;
+//   background: #d3d3d3;
+//   outline: none;
+//   opacity: 0.7;
+//   &:hover {
+//     opacity: 1;
+//   }
+//   -webkit-transition: 0.2s;
+//   transition: opacity 0.2s;
+//   &::-webkit-slider-thumb {
+//     -webkit-appearance: none;
+//     appearance: none;
+//     width: 20px;
+//     height: 20px;
+//     border-radius: 50%;
+//     background: #292929;
+//     cursor: pointer;
+//   }
+//   &::-moz-range-thumb {
+//     width: 20px;
+//     height: 20px;
+//     border-radius: 50%;
+//     background: #292929;
+//     cursor: pointer;
+//   }
+// `;
+// const SliderText = styled.p`
+//   font-family: Tahoma, sans-serif;
+//   color: #292929;
+//   font-size: 0.8rem;
+//   font-weight: bold;
+// `;
+// const SliderSpan = styled.span``;
 
-const Checkboxes = styled.div`
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  grid-template-rows: auto;
-  justify-items: start;
-  gap: 0.5rem;
-`;
+// const Checkboxes = styled.div`
+//   display: grid;
+//   grid-template-columns: 1fr 1fr;
+//   grid-template-rows: auto;
+//   justify-items: start;
+//   gap: 0.5rem;
+// `;
 
-const CheckboxDiv = styled.div`
+// const CheckboxDiv = styled.div`
+//   display: flex;
+//   justify-content: center;
+//   align-items: center;
+//   label {
+//     font-family: Tahoma, sans-serif;
+//     color: #292929;
+//     user-select: none;
+//     font-size: 0.8rem;
+//   }
+// `;
+
+// const CheckboxInput = styled.input``;
+
+const ChangeModelContainer = styled.div`
+  position: absolute;
   display: flex;
   justify-content: center;
   align-items: center;
-  label {
-    font-family: Tahoma, sans-serif;
-    color: #292929;
-    user-select: none;
-    font-size: 0.8rem;
+  gap: 1.5rem;
+  width: 15vw;
+  height: 12vh;
+  padding: 1rem;
+  top: 2vh;
+  left: 1vw;
+  border-radius: 10px;
+  background-color: rgba(252, 253, 255, 0.8);
+`;
+
+const ImageContainer = styled.div`
+  height: 6rem;
+  width: 6rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  transition: transform 300ms ease-in-out;
+
+  &:hover {
+    cursor: pointer;
+    transform: scale(1.05);
   }
 `;
 
-const CheckboxInput = styled.input``;
+const ImageSelect = styled.img`
+  height: 100%;
+  width: 100%;
+  object-fit: cover;
+`;
