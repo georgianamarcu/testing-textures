@@ -68,7 +68,7 @@ const Dropzone = ({ textureState, textureTitle }) => {
         )}
       </Container>
       <RemoveItem onClick={removeMap}>
-        <Trash size={20} color="#292929" weight="duotone" />
+        <Trash size={20} color="#292929" weight="thin" />
       </RemoveItem>
     </MainContainer>
   );
@@ -78,6 +78,7 @@ export default Dropzone;
 
 const MainContainer = styled.div`
   display: flex;
+  height: 100%;
 `;
 
 const Container = styled.div`
@@ -90,21 +91,23 @@ const Container = styled.div`
   border-radius: 20px;
   border-color: ${(props) => getColor(props)};
   border-style: double;
-  background-color: #fcfdff;
+  background-color: rgba(207, 214, 221, 0.84);
   outline: none;
   transition: border 0.24s ease-in-out;
+  backdrop-filter: blur(10px);
+  box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.1);
 `;
 
 const StyledText = styled.p`
   font-family: Tahoma, sans-serif;
   font-size: 14px;
-  color: #bdbdbd;
+  color: rgb(151, 151, 151);
 `;
 
 const Title = styled.h2`
   font-family: Tahoma, sans-serif;
   font-size: 20px;
-  color: #bdbdbd;
+  color: rgb(151, 151, 151);
 `;
 
 const RemoveItem = styled.div`
@@ -115,8 +118,8 @@ const RemoveItem = styled.div`
   justify-content: center;
   width: 35px;
   height: 35px;
-  background-color: #fcfdff;
-  border: 1px solid black;
+  background-color: rgba(207, 214, 221, 0.84);
+  border: 1px solid grey;
   border-radius: 50%;
   &:hover {
     cursor: pointer;
