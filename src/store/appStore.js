@@ -11,7 +11,7 @@ const initialState = {
   useNoiseMap: 0,
   useSuslikMethod: 0,
   debugNoise: 0,
-  selectedModel: "bed",
+  selectedModel: "chair",
 };
 
 export const useAppStore = create((set) => ({

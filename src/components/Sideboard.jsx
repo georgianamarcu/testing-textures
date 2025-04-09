@@ -10,8 +10,8 @@ import {
   Texture,
 } from "three";
 
-export const Chair = forwardRef((props, ref) => {
-  const { nodes, materials } = useGLTF("/chair.glb");
+export const Sideboard = forwardRef((props, ref) => {
+  const { nodes, materials } = useGLTF("/sideboard.glb");
   const albedoUrl = useAppStore((state) => state.albedoUrl);
   const roughnessUrl = useAppStore((state) => state.roughnessUrl);
   const normalsUrl = useAppStore((state) => state.normalsUrl);
@@ -21,15 +21,15 @@ export const Chair = forwardRef((props, ref) => {
   const useSuslikMethod = useAppStore((state) => state.useSuslikMethod);
   const debugNoise = useAppStore((state) => state.debugNoise);
 
-  const chair = useRef();
+  const sideboard = useRef();
   const standardMaterial = new MeshStandardMaterial();
 
   //**RANDOM UV SHADER */
   const textureLoader = useMemo(() => new TextureLoader(), []);
 
   useEffect(() => {
-    const chairMesh = chair.current;
-    if (!chairMesh) return;
+    const sideboardMesh = sideboard.current;
+    if (!sideboardMesh) return;
 
     const updateTexture = (url, mapType, colorSpace) => {
       if (url) {
@@ -42,13 +42,13 @@ export const Chair = forwardRef((props, ref) => {
             texture.wrapS = RepeatWrapping;
             texture.wrapT = RepeatWrapping;
 
-            if (!chairMesh.material[mapType]) {
-              chairMesh.material[mapType] = new Texture();
+            if (!sideboardMesh.material[mapType]) {
+              sideboardMesh.material[mapType] = new Texture();
             }
 
-            chairMesh.material[mapType].dispose();
-            chairMesh.material[mapType] = texture;
-            chairMesh.material.needsUpdate = true;
+            sideboardMesh.material[mapType].dispose();
+            sideboardMesh.material[mapType] = texture;
+            sideboardMesh.material.needsUpdate = true;
           },
           undefined,
           (error) => {
@@ -56,10 +56,10 @@ export const Chair = forwardRef((props, ref) => {
           }
         );
       } else {
-        if (chairMesh.material[mapType]) {
-          chairMesh.material[mapType].dispose();
-          chairMesh.material[mapType] = null;
-          chairMesh.material.needsUpdate = true;
+        if (sideboardMesh.material[mapType]) {
+          sideboardMesh.material[mapType].dispose();
+          sideboardMesh.material[mapType] = null;
+          sideboardMesh.material.needsUpdate = true;
         }
       }
     };
@@ -72,7 +72,7 @@ export const Chair = forwardRef((props, ref) => {
     roughnessUrl,
     normalsUrl,
     repeat,
-    chair,
+    sideboard,
     enableRandom,
     useNoiseMap,
     useSuslikMethod,
@@ -82,26 +82,22 @@ export const Chair = forwardRef((props, ref) => {
   return (
     <group ref={ref} {...props} dispose={null} rotation={[0, 0.5, 0]}>
       <mesh
-        ref={chair}
+        ref={sideboard}
         castShadow
         receiveShadow
-        geometry={nodes.chair.geometry}
+        geometry={nodes.sideboard.geometry}
         material={standardMaterial}
+        position={[-1.354, 0, -1.376]}
       />
       <mesh
         castShadow
         receiveShadow
-        geometry={nodes["Seating_Chairs_Curved-Back_01"].geometry}
-        material={materials.wood}
-      />
-      <mesh
-        castShadow
-        receiveShadow
-        geometry={nodes["Seating_Chairs_Curved-Back_01_1"].geometry}
-        material={materials["Metal Gold Marked"]}
+        geometry={nodes.legs.geometry}
+        material={materials["Material.001"]}
+        position={[-1.354, 0, -1.376]}
       />
     </group>
   );
 });
 
-useGLTF.preload("/chair.glb");
+useGLTF.preload("/sideboard.glb");

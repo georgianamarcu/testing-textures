@@ -42,16 +42,23 @@ const Overlay = () => {
       <ChangeModelContainer>
         <ImageContainer>
           <ImageSelect
-            src="/bed.jpg"
+            src="/bed.webp"
             alt="bed"
             onClick={() => update({ selectedModel: "bed" })}
           />
         </ImageContainer>
         <ImageContainer>
           <ImageSelect
-            src="/chair.jpg"
+            src="/chair.webp"
             alt="chair"
             onClick={() => update({ selectedModel: "chair" })}
+          />
+        </ImageContainer>
+        <ImageContainer>
+          <ImageSelect
+            src="/sideboard.webp"
+            alt="sideboard"
+            onClick={() => update({ selectedModel: "sideboard" })}
           />
         </ImageContainer>
       </ChangeModelContainer>
@@ -61,15 +68,15 @@ const Overlay = () => {
           <RepeatValue>
             <MinusCircle
               size={24}
-              color="#292929"
-              weight="duotone"
+              color="#5F5F60"
+              weight="thin"
               onClick={decrement}
             />
             <p>{repeat}</p>
             <PlusCircle
               size={24}
-              color="#292929"
-              weight="duotone"
+              color="#5F5F60"
+              weight="thin"
               onClick={increment}
             />
           </RepeatValue>
@@ -177,7 +184,9 @@ const ContainerSettings = styled.div`
   bottom: 10vh;
   left: 1vw;
   border-radius: 10px;
-  background-color: rgba(252, 253, 255, 0.8);
+  background-color: rgba(207, 214, 221, 0.84);
+  backdrop-filter: blur(10px);
+  box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.1);
 `;
 
 const ContainerUpload = styled.div`
@@ -202,7 +211,7 @@ const RepeatValue = styled.div`
     margin: 0;
     text-align: center;
     font-family: Tahoma, sans-serif;
-    color: #292929;
+    color: rgba(95, 95, 96, 0.84);
     user-select: none;
   }
 `;
@@ -217,7 +226,7 @@ const RepeatContainer = styled.div`
     margin: 0;
     text-align: center;
     font-family: Tahoma, sans-serif;
-    color: #292929;
+    color: rgba(95, 95, 96, 0.84);
     user-select: none;
     font-size: 0.8rem;
   }
@@ -308,16 +317,19 @@ const RepeatContainer = styled.div`
 const ChangeModelContainer = styled.div`
   position: absolute;
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
   gap: 1.5rem;
-  width: 15vw;
-  height: 12vh;
+  width: 10vw;
+  height: 40vh;
   padding: 1rem;
   top: 2vh;
   left: 1vw;
   border-radius: 10px;
-  background-color: rgba(252, 253, 255, 0.8);
+  background-color: rgba(207, 214, 221, 0.84);
+  backdrop-filter: blur(10px);
+  box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.1);
 `;
 
 const ImageContainer = styled.div`
@@ -328,6 +340,7 @@ const ImageContainer = styled.div`
   justify-content: center;
   overflow: hidden;
   transition: transform 300ms ease-in-out;
+  border-radius: 10px;
 
   &:hover {
     cursor: pointer;

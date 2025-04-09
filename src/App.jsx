@@ -11,8 +11,15 @@ function App() {
   const selectedModel = useAppStore((state) => state.selectedModel);
   return (
     <>
-      <Canvas dpr={[1, 2]} camera={{ fov: 30 }}>
-        <Stage preset={preset} intensity={0.2} adjustCamera={1.2}>
+      <Canvas dpr={[1, 2]} camera={{ fov: 45 }}>
+        <color attach="background" args={["#DFE4E6"]} />
+        <Stage
+          key={selectedModel}
+          preset="rembrandt"
+          intensity={0.1}
+          adjustCamera={1.5}
+          environment="city"
+        >
           <ConditionalRender selectedModel={selectedModel} />
         </Stage>
         <Controls />
